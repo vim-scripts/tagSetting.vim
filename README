@@ -1,0 +1,12 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1398
+
+There's two functions provided here.  The first is SetTags() which will scan all of the directories from your current working directory to the root directory for a file called "jtags" (who can rename it to just tags if you want).  If it finds a jtags file, it adds it to the tags option. 
+
+I use SetTags() when switching back and forth between different projects that have different tags files at their root level.  
+
+The second function is GenerateTags() which works similar to the above script.  It starts at your current working directory and scans all of the directories above it looking for a file called "build.xml" (you can use any file you want).  When it finds this file, it assumes that it is at the top of your directory structure and will run the ctags command to generate a new tags file.  By default it creates a tags file called "jtags" at that top level.  I use build.xml to indicate the top level because I generally use Ant and the ant build file is a good way to recognize the top of the project in the directory structure.
+
+The two functions have been mapped to commands to save typing.  Those commands are:
+
+map <unique> <Leader>tj <ESC>:call SetTags()<CR>
+map <unique> <Leader>tg <ESC>:call GenerateTags()<CR>
